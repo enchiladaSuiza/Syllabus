@@ -1,0 +1,14 @@
+.boton_login {
+    width: 22vh;
+    height: 2.2rem;
+    line-height: 2.2rem;
+}
+
+#carta_inicio_sesion {
+    width: 45vh;
+    height: 35vh;
+}
+
+#carta_inicio_sesion_contenido {
+    margin-top: 0.5rem;
+}

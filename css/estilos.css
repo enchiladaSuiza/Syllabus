@@ -1,0 +1,133 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1rem;
+    text-align: justify;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    color: white;
+    background: #4a148c;
+    box-shadow: 0px 0px 6px black;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+main {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(white, lightgray);
+}
+
+.nav_contenedor {
+    margin: 0.8rem;
+}
+
+.nav_lista {
+    list-style: none;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.nav_link {
+    text-shadow: 0 4px 10px black;
+    transition: all 0.3s;
+    margin: 0 1rem 0 1rem;
+    color: white;
+    text-decoration: none;
+}
+
+.nav_link:hover {
+    text-shadow: 0 2px 5px white;
+}
+
+.carta {
+    background: radial-gradient(#7c43bd, #4a148c);
+    box-shadow: 0 4px 6px black;
+    border-radius: 2px;
+}
+
+.carta_titulo {
+    position: absolute;
+    font-size: 0.8rem;
+    margin-top: 0.6rem;
+    margin-left: 0.6rem;
+    z-index: 1;
+    color: white;
+    text-shadow: 0 4px 10px black;
+    transition: all 0.5s;
+}
+
+.carta_contenido {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.flex_col {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.boton_regular {
+    font-size: 1rem;
+    border: none;
+    border-radius: 20px;
+    font-weight: 400;
+    color: black;
+    background: #f57f17;
+    /* box-shadow: 0px 1px 1px black; */
+    transition: ease-out 0.4s;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    width: 20vh;
+}
+
+.boton_regular:hover {
+    box-shadow: inset 30vh 0 0 0 #bb5000;
+    cursor: pointer;
+    color: white;
+}
+
+.etiqueta_para_texto {
+    font-size: 0.9rem;
+    color: white;
+    text-align: start;
+    text-shadow: 0 2px 5px black;
+}
+
+.campo_de_texto {
+    width: 20vh;
+    height: 1.5rem;
+    border-radius: 4px;
+    border: none;
+    margin: 0.4rem;
+    padding: 0.5rem;
+    text-align: center;
+    font-weight: 400;
+    font-family: inherit;
+}

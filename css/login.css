@@ -1,0 +1,15 @@
+.boton_entrar {
+    font-size: 0.9rem;
+    width: 15vh;
+    height: 1.8rem;
+    line-height: 1.8rem;
+}
+
+#carta_login_alumno {
+    width: 45vh;
+    height: 35vh;
+}
+
+#carta_login_alumno_contenido {
+    margin-top: 0.5rem;
+}
