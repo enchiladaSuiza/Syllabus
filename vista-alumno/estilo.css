@@ -1,0 +1,114 @@
+/* 
+    Created on : 11 nov. 2022, 22:35:14
+    Author     : gamars
+*/
+
+@font-face {
+    font-family: 'Rockwell Nova';
+    src: url('fonts/RockwellNova.ttf') format("truetype");
+}
+@font-face {
+    font-family: 'Dosis';
+    src: url('fonts/Dosis-VariableFont_wght.ttf') format("truetype");
+}
+@font-face {
+    font-family: 'PoynterText';
+    src: url('fonts/PoynterText Regular.ttf') format("truetype");
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html, body { height: 100%; }
+
+body { background: radial-gradient(white, lightgray); }
+
+header {
+    background: rgb(74, 20, 140);
+    width: 100%;
+    height: 6.5%;
+    box-shadow: 0 0 6px black;
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-end;
+}
+
+#content {
+    display: grid;
+    grid-template-columns: 5% 1fr 5%;
+    grid-template-rows: 11% 15% 1fr 5%;
+    grid-auto-rows: 1fr;
+    height: 90%;
+}
+
+#content > * {
+    display: flex;
+}
+
+#title {
+    font-family: 'Rockwell Nova';
+    font-size: 2rem;
+    text-shadow: 3px 2px rgba(0,0,0,0.3);
+    grid-column: 2;
+    grid-row: 1;
+    width: fit-content;
+    height: fit-content;
+    align-self: center;
+}
+
+#listMat {
+    justify-self: center;
+    align-self: center;
+    grid-column: 2;
+    grid-row: 3;
+    width: 95%;
+    height: 95%;
+    border-collapse: separate;
+    border-spacing: 2rem 1rem;
+}
+
+#listMat tr td {
+    font-family: 'Dosis';
+    font-size: 1.6rem;
+    border: 2px inset cyan;
+    border-radius: 10px;
+    padding: 0 1rem;
+}
+
+#listMat tr td:first-child { width: 700px; }
+
+#listMat tr td:last-child { width: 370px; }
+
+#infoAlumno, #infoContacto {
+    grid-column: 2;
+    grid-row: 2;
+    width: fit-content;
+    height: fit-content;
+    align-self: center;
+    font-family: 'PoynterText';
+    font-size: 1.2rem;
+    text-shadow: 1px 2px rgba(0,0,0,0.3);
+}
+
+#infoContacto { justify-self: flex-start; }
+
+#infoAlumno { justify-self: flex-end; }
+
+#salir {
+    text-shadow: 0 4px 5px black;
+    transition: all 0.3s;
+    color: white;
+    text-decoration: none;
+    font-family: 'Rockwell Nova';
+    font-size: 1.1rem;
+    align-self: center;
+    margin-right: 2rem;
+}
+
+#salir:hover {
+    cursor: pointer;
+    text-shadow: 0 2px 5px white;
+}
