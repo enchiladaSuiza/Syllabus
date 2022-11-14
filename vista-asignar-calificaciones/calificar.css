@@ -1,0 +1,43 @@
+.parcial {
+    width: auto;
+    padding: 0.5rem;
+}
+
+.titulo_parcial {
+    font-size: 1.2rem;
+    color: white;
+    text-shadow: 0px 2px 4px black;
+    margin: 0.6rem;
+}
+
+.boton_asignar {
+    margin: 0.2rem;
+    font-size: 0.9rem;
+    padding: 0.2rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    width: auto;
+}
+
+#carta_inicio {
+    width: auto;
+    padding: 0.5rem;
+    padding-right: 2rem;
+}
+
+#nombre_materia {
+    color: white;
+    text-shadow: 0px 2px 4px black;
+}
+
+#nombre_alumno {
+    font-size: 1rem;
+    color: white;
+    text-shadow: 0px 2px 4px black;
+}
+
+#id_alumno {
+    font-size: 1rem;
+    color: white;
+    text-shadow: 0px 2px 4px black;
+}

@@ -31,6 +31,7 @@
 
                     $query_nombre = "SELECT nombre FROM materia WHERE id_materia = $id_materia;";
                     $resultado_nombre = mysqli_fetch_array(mysqli_query($connex, $query_nombre));
+
                     $nombre_materia = $resultado_nombre['nombre'];
 
                     echo "$nombre_materia";
@@ -57,22 +58,30 @@
             <h2 class="subtitulo" id="correo">Correo electrónico</h2>
             <?php
                 $fila = 4;
+                $numeros_de_cuenta = [];
+                $indice = 0;
                 while ($alumno = mysqli_fetch_array($resultado_alumnos)) {
-                    echo "<p class=\"tupla\" style=\"grid-row: $fila; grid-column: 1\">".$alumno['id_alumno']."</p>\n";
+                    array_push($numeros_de_cuenta, $alumno['id_alumno']);
+
+                    echo "<p name=\"".$alumno['id_alumno']."\" class=\"tupla\" style=\"grid-row: $fila; grid-column: 1\">".$alumno['id_alumno']."</p>\n";
                     echo "<p class=\"tupla\" style=\"grid-row: $fila; grid-column: 2\">".$alumno['nombre']."</p>\n";
                     echo "<p class=\"tupla\" style=\"grid-row: $fila; grid-column: 3\">".$alumno['apellido_p']."</p>\n";
                     echo "<p class=\"tupla\" style=\"grid-row: $fila; grid-column: 4\">".$alumno['apellido_m']."</p>\n";
                     echo "<p class=\"tupla\" style=\"grid-row: $fila; grid-column: 5\">".$alumno['correo']."</p>\n";
-                    echo "<a class=\"boton_regular boton_calificar\" style=\"grid-row: $fila; grid-column: 6\">Calificar</a>";
+
+                    echo "<form style=\"grid-row: $fila; grid-column: 6\" class=\"flex_col\" method=\"post\" action=\"../vista-asignar-calificaciones/\">";
+                    echo "<button class=\"boton_regular boton_calificar\" onclick=\"calificar(".$alumno['id_alumno'].")\">Calificar</button>";
+                    echo "<input type=\"text\" name=\"mandar_id\" value=\"".$alumno['id_alumno']."\" hidden>";
+                    echo "</form>";
+
                     $fila++;
                 }
 
                 mysqli_close($connex);
             ?>
+            <script src="alumnos.js"></script>
             <h2></h2>
         </section>
     </main>
-
-
 </body>
 </html>

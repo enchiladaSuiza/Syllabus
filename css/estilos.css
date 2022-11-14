@@ -92,6 +92,13 @@ main {
     align-items: center;
 }
 
+.flex_row {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+}
+
 .boton_regular {
     font-size: 1rem;
     border: none;
