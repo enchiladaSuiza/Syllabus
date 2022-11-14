@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syllabus - Alumno</title>
+    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+<body>
+    <header>
+        <nav class="nav_contenedor">
+             <div class="nav_menu" id="nav_menu">
+                <ul class="nav_lista">
+                    <li class="nav_item"><a href="../index.html" class="nav_link">Syllabus</a></li>
+                </ul>
+             </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="carta_login_alumno" class="carta">
+            <p class="carta_titulo">Datos</p>
+            <form id="carta_login_alumno_contenido" class="carta_contenido flex_col" method="post" action="../vista-alumno/">
+                <div class="registro flex_col">
+                    <label class="etiqueta_para_texto" for="numero-de-cuenta">Número de cuenta</label>
+                    <input class="campo_de_texto" name="id_alumno" type="text" value="">
+                </div>
+                <div class="registro flex_col">
+                    <label class="etiqueta_para_texto" for="nip">NIP</label>
+                    <input class="campo_de_texto" name="nip" type="password" value="">
+                </div>
+                <input type="submit" class="boton_regular boton_entrar" value="Entrar">
+            </form>
+        </section>
+    </main>
+</body>
+</html>

@@ -31,7 +31,7 @@ CREATE TABLE `alum_calif` (
   KEY `id_calif` (`id_calif`),
   CONSTRAINT `alum_calif_ibfk_1` FOREIGN KEY (`id_alumno`) REFERENCES `alumno` (`id_alumno`),
   CONSTRAINT `alum_calif_ibfk_2` FOREIGN KEY (`id_calif`) REFERENCES `calificacion` (`id_calif`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -58,7 +58,7 @@ CREATE TABLE `alumno` (
   `no_semestre` int NOT NULL,
   `correo` varchar(60) NOT NULL,
   PRIMARY KEY (`id_alumno`)
-) ENGINE=InnoDB AUTO_INCREMENT=55009 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=55009 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -85,7 +85,7 @@ CREATE TABLE `calificacion` (
   PRIMARY KEY (`id_calif`),
   KEY `id_materia` (`id_materia`),
   CONSTRAINT `calificacion_ibfk_1` FOREIGN KEY (`id_materia`) REFERENCES `materia` (`id_materia`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -95,6 +95,60 @@ CREATE TABLE `calificacion` (
 LOCK TABLES `calificacion` WRITE;
 /*!40000 ALTER TABLE `calificacion` DISABLE KEYS */;
 /*!40000 ALTER TABLE `calificacion` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cred_a`
+--
+
+DROP TABLE IF EXISTS `cred_a`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `cred_a` (
+  `id_cred_a` int NOT NULL AUTO_INCREMENT,
+  `id_alumno` int NOT NULL,
+  `cred` varchar(15) NOT NULL,
+  PRIMARY KEY (`id_cred_a`),
+  KEY `id_alumno` (`id_alumno`),
+  CONSTRAINT `cred_a_ibfk_1` FOREIGN KEY (`id_alumno`) REFERENCES `alumno` (`id_alumno`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cred_a`
+--
+
+LOCK TABLES `cred_a` WRITE;
+/*!40000 ALTER TABLE `cred_a` DISABLE KEYS */;
+INSERT INTO `cred_a` VALUES (1,55000,'55000'),(2,55001,'55001'),(3,55002,'55002'),(4,55003,'55003'),(5,55004,'55004'),(6,55005,'55005'),(7,55006,'55006'),(8,55007,'55007'),(9,55008,'55008');
+/*!40000 ALTER TABLE `cred_a` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cred_p`
+--
+
+DROP TABLE IF EXISTS `cred_p`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `cred_p` (
+  `id_cred_p` int NOT NULL AUTO_INCREMENT,
+  `id_profesor` int NOT NULL,
+  `cred` varchar(15) NOT NULL,
+  PRIMARY KEY (`id_cred_p`),
+  KEY `id_profesor` (`id_profesor`),
+  CONSTRAINT `cred_p_ibfk_1` FOREIGN KEY (`id_profesor`) REFERENCES `profesor` (`id_profesor`)
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cred_p`
+--
+
+LOCK TABLES `cred_p` WRITE;
+/*!40000 ALTER TABLE `cred_p` DISABLE KEYS */;
+INSERT INTO `cred_p` VALUES (1,33001,'33001'),(2,33002,'33002'),(3,33003,'33003'),(4,33004,'33004'),(5,33005,'33005'),(6,33006,'33006'),(7,33007,'33007'),(8,33008,'33008'),(9,33009,'33009'),(10,33010,'33010'),(11,33011,'33011'),(12,33012,'33012'),(13,33013,'33013'),(14,33014,'33014'),(15,33015,'33015'),(16,33016,'33016'),(17,33017,'33017'),(18,33018,'33018'),(19,33019,'33019'),(20,33020,'33020'),(21,33021,'33021'),(22,33022,'33022'),(23,33023,'33023'),(24,33024,'33024'),(25,33025,'33025'),(26,33026,'33026'),(27,33027,'33027'),(28,33028,'33028'),(29,33029,'33029'),(30,33030,'33030'),(31,33031,'33031'),(32,33032,'33032');
+/*!40000 ALTER TABLE `cred_p` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -112,7 +166,7 @@ CREATE TABLE `materia` (
   PRIMARY KEY (`id_materia`),
   KEY `id_profesor` (`id_profesor`),
   CONSTRAINT `materia_ibfk_1` FOREIGN KEY (`id_profesor`) REFERENCES `profesor` (`id_profesor`)
-) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -139,7 +193,7 @@ CREATE TABLE `profesor` (
   `apellido_m` varchar(15) NOT NULL,
   `correo` varchar(60) NOT NULL,
   PRIMARY KEY (`id_profesor`)
-) ENGINE=InnoDB AUTO_INCREMENT=33033 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33033 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -161,4 +215,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-12 18:02:43
+-- Dump completed on 2022-11-14 13:02:24
