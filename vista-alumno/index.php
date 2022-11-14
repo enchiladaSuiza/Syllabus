@@ -11,6 +11,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="estilo.css"/>
+        <script src="addLinks.js"></script>
     </head>
     
     <body>
@@ -37,30 +38,30 @@
                     echo "Semestre: " . $v['no_semestre'] . "°<br>";
                 ?>
             </p>
+            <div id="listMatBack" class="back"></div>
             <table id="listMat">
                 <tr>
-                    <td><b>Materia</b></td>
-                    <td><b>Profesor</b></td>
+                    <td class="title"><b>Materia</b></td>
+                    <td class="title"><b>Profesor</b></td>
                 </tr>
-                <?php                
-                    // $sem_alumno = 1; // Aqui hay que obtener el semestre del alumno que inició sesión
-                    
+                <?php        
                     $sem_alumno = mysqli_fetch_array(mysqli_query($cnx, "select no_semestre from alumno where id_alumno = $id_alumno"))['no_semestre'];
-                    
+                        
                     $sql = "select m.nombre as materia, m.no_semestre, p.nombre, p.apellido_p, " .
                     "p.apellido_m from materia as m, profesor as p where m.no_semestre = $sem_alumno " .
                     "and m.id_profesor = p.id_profesor";
-                    
+                        
                     $resultSet = mysqli_query($cnx, $sql);
-                    
+                        
+                    $no_mat = 1;
                     while ($row = mysqli_fetch_array($resultSet)) {
                         echo "<tr>";
-                        echo "<td style='font-weight: normal'>" . $row['materia'] . " (" . $row['no_semestre'] . "° Sem)</td>";
-                        echo "<td>" . $row['nombre'] . " " . $row['apellido_p'] . " " .
-                        $row['apellido_m'] . "</td>";
+                        echo "<td class='cell'><a href='#' id='m$no_mat' name='materia'>" . $row['materia'] . " (" . $row['no_semestre'] . "° Sem)</a></td>";
+                        echo "<td class='cell'>" . $row['nombre'] . " " . $row['apellido_p'] . " " . $row['apellido_m'] . "</td>";
                         echo "</tr>";
+                        $no_mat ++;
                     }
-                    
+                        
                     mysqli_close($cnx);
                 ?>
             </table>

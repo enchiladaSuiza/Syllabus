@@ -82,7 +82,7 @@ header {
 
 #listMat tr td:last-child { width: 370px; }
 
-#infoAlumno, #infoContacto {
+#infoProfe, #infoContacto {
     grid-column: 2;
     grid-row: 2;
     width: fit-content;
@@ -95,7 +95,7 @@ header {
 
 #infoContacto { justify-self: flex-start; }
 
-#infoAlumno { justify-self: flex-end; }
+#infoProfe { justify-self: flex-end; }
 
 #salir {
     text-shadow: 0 4px 5px black;
