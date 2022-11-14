@@ -1,0 +1,74 @@
+.subtitulo {
+    margin: 0.2rem;
+    margin-bottom: 1rem;
+    padding: 0.2rem;
+    text-align: center;
+    color: #4a148c;
+    background: lightgray;
+    box-shadow: 0 4px 8px black;
+    border-radius: 4px;
+}
+
+.tupla {
+    margin: 0.2rem;
+    line-height: 2rem;
+    text-align: center;
+    color: black;
+    background: whitesmoke;
+    box-shadow: 0 4px 8px black;
+    border-radius: 4px;
+}
+
+.boton_calificar {
+    margin: 0.2rem;
+    margin-left: 0.5rem;
+    font-size: 0.9rem;
+    width: 12vh;
+    height: 2rem;
+    line-height: 2rem;
+}
+
+#alumnos-grid {
+    display: grid;
+    padding-bottom: 1rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;;
+}
+
+#nombre-materia {
+    font-size: 2rem;
+    margin: 1rem;
+    grid-row: 1;
+    grid-column: 1;
+    text-shadow: 0 4px 8px black;
+    color: white;
+}
+
+#alumnos-inscritos {
+    margin: 1rem;
+    grid-row: 1;
+    grid-column: 5;
+    color: white;
+    text-align: end;
+}
+
+#numero-cuenta {
+    grid-row: 3;
+    grid-column: 1;
+}
+#nombre {
+    grid-row: 3;
+    grid-column: 2;
+}
+#apellido-paterno {
+    grid-row: 3;
+    grid-column: 3;
+}
+#apellido-materno {
+    grid-row: 3;
+    grid-column: 4;
+}
+#correo {
+    grid-row: 3;
+    grid-column: 5;
+}

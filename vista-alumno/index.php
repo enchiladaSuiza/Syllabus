@@ -12,6 +12,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="estilo.css"/>
     </head>
+    
     <body>
         <header>
             <a href="../" target="_self" id="salir">Salir</a>
@@ -20,7 +21,7 @@
             <p id="title">Syllabus Alumno</p>
             <p id="infoContacto">
                 <?php
-                    $cnx = mysqli_connect("localhost","root","31delfinZYTO!","syllabus") or die("No se pudo conectar al servidor");
+                    $cnx = mysqli_connect("localhost","root","","syllabus") or die("No se pudo conectar al servidor");
                     
                     $info_alum = mysqli_query($cnx, "select * from alumno where id_alumno = $id_alumno");
                     
