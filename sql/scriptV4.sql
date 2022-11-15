@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 14-11-2022 a las 21:30:26
+-- Tiempo de generación: 15-11-2022 a las 15:07:53
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 7.4.30
 
@@ -25,11 +25,23 @@ DELIMITER $$
 --
 -- Procedimientos
 --
+DROP PROCEDURE IF EXISTS `addAlumno`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `addAlumno` (IN `nom` VARCHAR(15), IN `ap_p` VARCHAR(15), IN `ap_m` VARCHAR(15), IN `sem` INT, IN `em` VARCHAR(60), IN `psw` VARCHAR(15))  begin
+insert into alumno (nombre, apellido_p, apellido_m, no_semestre, correo) values (nom, ap_p, ap_m, sem, em);
+insert into cred_a (id_alumno, cred) values (last_insert_id(), psw);
+end$$
+
 DROP PROCEDURE IF EXISTS `assignCalif`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `assignCalif` (IN `idA` INT, IN `idM` INT, IN `calif` FLOAT, IN `prcl` INT)  begin
 insert into calificacion (id_materia, calificacion, parcial) values (idM, calif, prcl);
 select @idCal := last_insert_id();
 call insertAlumCalif(idA, @idCal);
+end$$
+
+DROP PROCEDURE IF EXISTS `changeCal`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `changeCal` (IN `idA` INT, IN `idM` INT, IN `prcl` INT, IN `newCal` FLOAT)  begin
+select @califID := c.id_calif, @alum_calID := ac.id_alum_cal from calificacion as c, materia as m, alum_calif as ac where ac.id_calif = c.id_calif and ac.id_alumno = idA and c.parcial = prcl and c.id_materia = m.id_materia and m.id_materia = idM;
+update calificacion set calificacion = newCal where id_calif = @califID;
 end$$
 
 DROP PROCEDURE IF EXISTS `insertAlumCalif`$$
@@ -83,7 +95,8 @@ INSERT INTO `alumno` (`id_alumno`, `nombre`, `apellido_p`, `apellido_m`, `no_sem
 (55005, 'Tairel', 'Fixer', 'Doer', 6, 'fi55005@esc.edu.mx'),
 (55006, 'Roxan', 'Truver', 'Pox', 7, 'tr55006@esc.edu.mx'),
 (55007, 'Bernard', 'Lennin', 'Tossein', 8, 'le55007@esc.edu.mx'),
-(55008, 'Dulock', 'Shrink', 'Fedex', 9, 'sh55008@esc.edu.mx');
+(55008, 'Dulock', 'Shrink', 'Fedex', 9, 'sh55008@esc.edu.mx'),
+(55009, 'Warlock', 'Chester', 'Benson', 5, 'ch55009@esc.edu.mx');
 
 -- --------------------------------------------------------
 
@@ -141,7 +154,7 @@ CREATE TABLE `calificacion` (
 
 INSERT INTO `calificacion` (`id_calif`, `id_materia`, `calificacion`, `parcial`) VALUES
 (1, 1, 9.5, 1),
-(2, 2, 8.3, 1),
+(2, 2, 9.1, 1),
 (3, 3, 10, 1);
 
 -- --------------------------------------------------------
@@ -176,7 +189,8 @@ INSERT INTO `cred_a` (`id_cred_a`, `id_alumno`, `cred`) VALUES
 (6, 55005, '55005'),
 (7, 55006, '55006'),
 (8, 55007, '55007'),
-(9, 55008, '55008');
+(9, 55008, '55008'),
+(10, 55009, '55009');
 
 -- --------------------------------------------------------
 
@@ -424,7 +438,7 @@ ALTER TABLE `profesor`
 -- AUTO_INCREMENT de la tabla `alumno`
 --
 ALTER TABLE `alumno`
-  MODIFY `id_alumno` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55009;
+  MODIFY `id_alumno` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55010;
 
 --
 -- AUTO_INCREMENT de la tabla `alum_calif`
@@ -442,7 +456,7 @@ ALTER TABLE `calificacion`
 -- AUTO_INCREMENT de la tabla `cred_a`
 --
 ALTER TABLE `cred_a`
-  MODIFY `id_cred_a` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_cred_a` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `cred_p`
