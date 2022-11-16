@@ -1,0 +1,120 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: justify;
+}
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    color: white;
+    background: #4a148c;
+    box-shadow: 0px 0px 6px black;
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.nav_contenedor {
+    margin: 0.8rem;
+}
+.nav_lista {
+    list-style: none;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    
+}
+.nav_link {
+    text-shadow: 0 4px 10px black;
+    transition: all 0.3s;
+    margin: 0 1rem 0 1rem;
+    color: white;
+    text-decoration: none;
+}
+.nav_link:hover {
+    text-shadow: 0 2px 5px white;
+}
+h1{
+    font-weight: bold;
+    letter-spacing: 5px;
+    font-size: 50px;
+    text-align: center;
+    margin-top: 60px;
+    color: white;
+    text-shadow: 0 4px 10px black;
+    margin: 1rem;
+}
+p {
+    font-size: 25px;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+}
+main {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(white, lightgray);
+}
+.carta {
+    background: radial-gradient(#7c43bd, #4a148c);
+    box-shadow: 0 4px 6px black;
+    border-radius: 2px;
+}
+.contenedor_inf{
+    align-items: center;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    line-height: 30px;
+    margin-top: 20px;
+    padding-bottom: 1rem;
+}
+.contenedor_btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 35px;
+    margin-bottom: 35px;
+}
+.boton_regular {
+    font-size: 1rem;
+    border: none;
+    border-radius: 20px;
+    font-size: 20px;
+    color: black;
+    background: #f57f17;
+    transition: ease-out 0.4s;
+    text-align: center;
+    text-decoration: none;
+    width: 180px;
+    height: 50px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 8px;
+}
+.boton_regular:hover {
+    box-shadow: inset 30vh 0 0 0 #bb5000;
+    cursor: pointer;
+    color: white;
+}
+.first{
+    font-style: italic;
+    font-size: 22px;
+}

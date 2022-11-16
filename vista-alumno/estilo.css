@@ -36,6 +36,17 @@ header {
     justify-content: flex-end;
 }
 
+button {
+    background: none!important;
+    border: none;
+    font-family: inherit!important;
+    font-size: 1.6rem;
+    padding: 0!important;
+    color: black;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 #content {
     display: grid;
     grid-template-columns: 5% 1fr 5%;

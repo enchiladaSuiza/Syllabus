@@ -38,7 +38,7 @@
                 ?>
             </p>
             <div id="listMatBack" class="back animar"></div>
-            <table id="listMat">
+            <table id="listMat" class="animar">
                 <tr>
                     <td class="title"><b>Materia Impartida</b></td>
                     <td class="title"><b>Semestre</b></td>
@@ -55,7 +55,7 @@
                         echo "<td class='cell'>";
                         echo "<form method='post' action='../vista-alumnos-materia/'>";
                         echo "<button id='m$no_mat' name='materia'>" . $row['nombre'] . "</button>";
-                        echo "<input type='text' name='id_materia' value='".$row['id_materia']."' hidden>";
+                        echo "<input type='text' name='mandar_id_materia' value='".$row['id_materia']."' hidden>";
                         echo "</form>";
                         echo "</td>";
                         echo "<td class='cell'>" . $row['no_semestre'] . "° Semestre </td>";

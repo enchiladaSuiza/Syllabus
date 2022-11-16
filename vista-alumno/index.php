@@ -10,7 +10,7 @@
         </title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="estilo.css"/>
+        <link rel="stylesheet" href="./estilo.css"/>
         <script src="addLinks.js"></script>
     </head>
     
@@ -39,7 +39,7 @@
                 ?>
             </p>
             <div id="listMatBack" class="back animar"></div>
-            <table id="listMat">
+            <table id="listMat" class="animar">
                 <tr>
                     <td class="title"><b>Materia</b></td>
                     <td class="title"><b>Profesor</b></td>
@@ -47,7 +47,7 @@
                 <?php        
                     $sem_alumno = mysqli_fetch_array(mysqli_query($cnx, "select no_semestre from alumno where id_alumno = $id_alumno"))['no_semestre'];
                         
-                    $sql = "select m.nombre as materia, m.no_semestre, p.nombre, p.apellido_p, " .
+                    $sql = "select m.id_materia, m.nombre as materia, m.no_semestre, p.nombre, p.apellido_p, " .
                     "p.apellido_m from materia as m, profesor as p where m.no_semestre = $sem_alumno " .
                     "and m.id_profesor = p.id_profesor";
                         
@@ -56,7 +56,13 @@
                     $no_mat = 1;
                     while ($row = mysqli_fetch_array($resultSet)) {
                         echo "<tr>";
-                        echo "<td class='cell'><a href='#' id='m$no_mat' name='materia'>" . $row['materia'] . " (" . $row['no_semestre'] . "° Sem)</a></td>";
+                        echo "<td class='cell'>";
+                        echo "<form method='post' action='../vista-calificaciones/'>";
+                        echo "<button id='m$no_mat' name='materia'>" . $row['materia'] . " (" . $row['no_semestre'] . "° Sem)</button>";
+                        echo "<input type='text' name='mandar_id_materia' value='".$row['id_materia']."' hidden>";
+                        echo "<input type='text' name='mandar_id_alumno' value='".$id_alumno."' hidden>";
+                        echo "</form>";
+                        echo "</td>";
                         echo "<td class='cell'>" . $row['nombre'] . " " . $row['apellido_p'] . " " . $row['apellido_m'] . "</td>";
                         echo "</tr>";
                         $no_mat ++;

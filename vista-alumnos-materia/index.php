@@ -26,7 +26,7 @@
                 <?php
                     $connex = mysqli_connect("localhost", "root", "", "syllabus") or die("Conexión fallida: ".mysqli_connect_error());
 
-                    $id_materia = $_POST['id_materia'];
+                    $id_materia = $_POST['mandar_id_materia'];
 
                     $query_nombre = "SELECT nombre FROM materia WHERE id_materia = $id_materia;";
                     $resultado_nombre = mysqli_fetch_array(mysqli_query($connex, $query_nombre));
