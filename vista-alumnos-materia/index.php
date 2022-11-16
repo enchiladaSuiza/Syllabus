@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alumnos</title>
     <link rel="stylesheet" href="../css/estilos.css"/>
-    <link rel="stylesheet" href="alumnos.css"/>
+    <link rel="stylesheet" href="./alumnos.css"/>
     <script defer src="alumnos.js"></script>
 </head>
 <body>
@@ -21,7 +21,7 @@
     </header>
 
     <main>
-        <section class="carta" id="alumnos-grid">
+        <section class="carta animar" id="alumnos-grid">
             <h1 id="nombre-materia">
                 <?php
                     $connex = mysqli_connect("localhost", "root", "", "syllabus") or die("Conexión fallida: ".mysqli_connect_error());
@@ -70,7 +70,8 @@
 
                     echo "<form style=\"grid-row: $fila; grid-column: 6\" class=\"flex_col\" method=\"post\" action=\"../vista-asignar-calificaciones/\">";
                     echo "<button class=\"boton_regular boton_calificar\" onclick=\"calificar(".$alumno['id_alumno'].")\">Calificar</button>";
-                    echo "<input type=\"text\" name=\"mandar_id\" value=\"".$alumno['id_alumno']."\" hidden>";
+                    echo "<input type=\"text\" name=\"mandar_id_alumno\" value=\"".$alumno['id_alumno']."\" hidden>";
+                    echo "<input type=\"text\" name=\"mandar_id_materia\" value=\"".$id_materia."\" hidden>";
                     echo "</form>";
 
                     $fila++;

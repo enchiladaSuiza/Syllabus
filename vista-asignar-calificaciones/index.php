@@ -23,7 +23,7 @@
         <?php
             $connex = mysqli_connect("localhost", "root", "", "syllabus") or die("Conexión fallida: ".mysqli_connect_error());
 
-            $id_materia = 1;
+            $id_materia = $_POST['mandar_id_materia'];
 
             $query_nombre = "SELECT nombre FROM materia WHERE id_materia = $id_materia;";
 
@@ -31,44 +31,103 @@
             
             $nombre_materia = $resultado_nombre['nombre'];
 
-            $id_alumno = $_POST['mandar_id'];
+            $id_alumno = $_POST['mandar_id_alumno'];
 
             $query_alumno = "SELECT * FROM alumno WHERE id_alumno = $id_alumno;";
 
             $resultado_alumno = mysqli_fetch_array(mysqli_query($connex, $query_alumno));
 
-            echo "<section id=\"carta_inicio\" class=\"carta\">";
+            echo "<section id=\"carta_inicio animar\" class=\"carta\">";
             echo "<h1 id=\"nombre_materia\">$nombre_materia</h1>";
             echo "<h2 id=\"nombre_alumno\">".$resultado_alumno['apellido_p']." ".$resultado_alumno['apellido_m']." ".$resultado_alumno['nombre']."</h2>";
             echo "<h2 id=\"id_alumno\">$id_alumno</h2>";
             echo "</section>";
 
-            echo "<section class=\"carta parcial flex_col\">";
+            if (isset($_POST['calif'])) {
+                $id_materia = $_POST['mandar_id_materia'];
+                $id_alumno = $_POST['mandar_id_alumno'];
+                $calificacion = $_POST['calif'];
+                $parcial = $_POST['parcial'];
+                $query_asignar = "";
+            
+                if (isset($_POST['asignar_calif'])) { 
+                    $query_asignar = "CALL assignCalif($id_alumno, $id_materia, $calificacion, $parcial);";
+                } else { // Actualizar
+                    $query_asignar = "CALL changeCal($id_alumno, $id_materia, $parcial, $calificacion);";
+                }
+                echo "<section id=\"carta_inicio animar\" class=\"carta\">";
+            
+                $stmt_asignar = mysqli_query($connex, $query_asignar);
+                
+                if ($stmt_asignar) {
+                    echo "<h2 id=\"mensaje_base\">Calificación asignada correctamente.</h2>";
+                } else {
+                    echo "<h2 id=\"mensaje_base\">Problema al asignar la calificación.</h2>";
+                }
+                echo "</section>";
+
+                while (mysqli_next_result($connex)) {
+                    mysqli_use_result($connex);
+                    mysqli_free_result($stmt_asignar);
+                }
+            }
+
+            $query_calif_1p = "SELECT readCalif($id_alumno, $id_materia, 1);";
+            $calif_1p = mysqli_fetch_array(mysqli_query($connex, $query_calif_1p));
+
+            echo "<section class=\"carta parcial flex_col animar retardo-1\">";
             echo "<h1 class=\"titulo_parcial\">Primer Parcial</h1>";
-            echo "<div class=\"flex_row\">";
-            echo "<label class=\"etiqueta_para_texto\" for=\"calif_1p\">Calificación</label>"; 
-            echo "<input class=\"campo_de_texto\" name=\"calif_1p\" type=\"text\">";
-            echo "<a class=\"boton_regular boton_asignar\">Asignar</a>";
-            echo "</div>";
+            echo "<form action=\"index.php\" method=\"POST\" class=\"flex_row\">";
+            echo "<label class=\"etiqueta_para_texto\" for=\"calif\">Calificación</label>"; 
+            echo "<input class=\"campo_de_texto\" name=\"calif\" type=\"text\" value=\"$calif_1p[0]\">";
+            if (is_null($calif_1p[0])) {
+                echo "<input name=\"asignar_calif\" type=\"submit\" class=\"boton_regular boton_asignar\" value=\"Asignar\">";
+            } else {
+                echo "<input name=\"actualizar_calif\" type=\"submit\" class=\"boton_regular boton_asignar\" value=\"Asignar\">";
+            }
+            echo "<input name=\"parcial\" value=\"1\" hidden>";
+            echo "<input type=\"text\" name=\"mandar_id_materia\" value=\"$id_materia\" hidden>";
+            echo "<input type=\"text\" name=\"mandar_id_alumno\" value=\"$id_alumno\" hidden>";
+            echo "</form>";
             echo "</section>";
 
-            echo "<section class=\"carta parcial flex_col\">";
+            $query_calif_2p = "SELECT readCalif($id_alumno, $id_materia, 2);";
+            $calif_2p = mysqli_fetch_array(mysqli_query($connex, $query_calif_2p));
+            echo "<section class=\"carta parcial flex_col animar retardo-2\">";
             echo "<h1 class=\"titulo_parcial\">Segundo Parcial</h1>";
-            echo "<div class=\"flex_row\">";
-            echo "<label class=\"etiqueta_para_texto\" for=\"calif_2p\">Calificación</label>"; 
-            echo "<input class=\"campo_de_texto\" name=\"calif_2p\" type=\"text\">";
-            echo "<a class=\"boton_regular boton_asignar\">Asignar</a>";
-            echo "</div>";
+            echo "<form action=\"index.php\" method=\"POST\" class=\"flex_row\">";
+            echo "<label class=\"etiqueta_para_texto\" for=\"calif\">Calificación</label>"; 
+            echo "<input class=\"campo_de_texto\" name=\"calif\" type=\"text\" value=\"$calif_2p[0]\">";
+            if (is_null($calif_2p[0])) {
+                echo "<input name=\"asignar_calif\" type=\"submit\" class=\"boton_regular boton_asignar\" value=\"Asignar\">";
+            } else {
+                echo "<input name=\"actualizar_calif\" type=\"submit\" class=\"boton_regular boton_asignar\" value=\"Asignar\">";
+            }
+            echo "<input name=\"parcial\" value=\"2\" hidden>";
+            echo "<input type=\"text\" name=\"mandar_id_materia\" value=\"$id_materia\" hidden>";
+            echo "<input type=\"text\" name=\"mandar_id_alumno\" value=\"$id_alumno\" hidden>";
+            echo "</form>";
             echo "</section>";
 
-            echo "<section class=\"carta parcial flex_col\">";
-            echo "<h1 class=\"titulo_parcial\">Ordinario Parcial</h1>";
-            echo "<div class=\"flex_row\">";
-            echo "<label class=\"etiqueta_para_texto\" for=\"calif_3p\">Calificación</label>"; 
-            echo "<input class=\"campo_de_texto\" name=\"calif_3p\" type=\"text\">";
-            echo "<a class=\"boton_regular boton_asignar\">Asignar</a>";
-            echo "</div>";
+            $query_calif_3p = "SELECT readCalif($id_alumno, $id_materia, 3);";
+            $calif_3p = mysqli_fetch_array(mysqli_query($connex, $query_calif_3p));
+            echo "<section class=\"carta parcial flex_col animar retardo-3\">";
+            echo "<h1 class=\"titulo_parcial\">Ordinario</h1>";
+            echo "<form action=\"index.php\" method=\"POST\" class=\"flex_row\">";
+            echo "<label class=\"etiqueta_para_texto\" for=\"calif\">Calificación</label>";
+            echo "<input class=\"campo_de_texto\" name=\"calif\" type=\"text\" value=\"$calif_3p[0]\">";
+            if (is_null($calif_3p[0])) {
+                echo "<input name=\"asignar_calif\" type=\"submit\" class=\"boton_regular boton_asignar\" value=\"Asignar\">";
+            } else {
+                echo "<input name=\"actualizar_calif\" type=\"submit\" class=\"boton_regular boton_asignar\" value=\"Asignar\">";
+            }
+            echo "<input name=\"parcial\" value=\"3\" hidden>";
+            echo "<input type=\"text\" name=\"mandar_id_materia\" value=\"$id_materia\" hidden>";
+            echo "<input type=\"text\" name=\"mandar_id_alumno\" value=\"$id_alumno\" hidden>";
+            echo "</form>";
             echo "</section>";
+
+            mysqli_close($connex);
         ?>
     </main>
 </body>

@@ -18,7 +18,7 @@ START TRANSACTION;
 --
 -- Base de datos: `syllabus`
 --
-CREATE DATABASE IF NOT EXISTS `syllabus` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+CREATE DATABASE IF NOT EXISTS `syllabus` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `syllabus`;
 
 DELIMITER $$
@@ -76,7 +76,7 @@ CREATE TABLE `alumno` (
   `apellido_m` varchar(15) NOT NULL,
   `no_semestre` int NOT NULL,
   `correo` varchar(60) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- RELACIONES PARA LA TABLA `alumno`:
@@ -109,7 +109,7 @@ CREATE TABLE `alum_calif` (
   `id_alum_cal` int NOT NULL,
   `id_alumno` int NOT NULL,
   `id_calif` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- RELACIONES PARA LA TABLA `alum_calif`:
@@ -140,7 +140,7 @@ CREATE TABLE `calificacion` (
   `id_materia` int NOT NULL,
   `calificacion` float NOT NULL,
   `parcial` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- RELACIONES PARA LA TABLA `calificacion`:
@@ -168,7 +168,7 @@ CREATE TABLE `cred_a` (
   `id_cred_a` int NOT NULL,
   `id_alumno` int NOT NULL,
   `cred` varchar(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- RELACIONES PARA LA TABLA `cred_a`:
@@ -203,7 +203,7 @@ CREATE TABLE `cred_p` (
   `id_cred_p` int NOT NULL,
   `id_profesor` int NOT NULL,
   `cred` varchar(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- RELACIONES PARA LA TABLA `cred_p`:
@@ -261,7 +261,7 @@ CREATE TABLE `materia` (
   `nombre` varchar(50) NOT NULL,
   `id_profesor` int NOT NULL,
   `no_semestre` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- RELACIONES PARA LA TABLA `materia`:
@@ -334,7 +334,7 @@ CREATE TABLE `profesor` (
   `apellido_p` varchar(15) NOT NULL,
   `apellido_m` varchar(15) NOT NULL,
   `correo` varchar(60) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- RELACIONES PARA LA TABLA `profesor`:
