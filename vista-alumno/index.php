@@ -38,7 +38,7 @@
                     echo "Semestre: " . $v['no_semestre'] . "°<br>";
                 ?>
             </p>
-            <div id="listMatBack" class="back"></div>
+            <div id="listMatBack" class="back animar"></div>
             <table id="listMat">
                 <tr>
                     <td class="title"><b>Materia</b></td>

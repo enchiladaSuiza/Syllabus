@@ -37,7 +37,7 @@
                     echo "Profesor: " . $v['nombre'] . " " . $v['apellido_p'] . " " . $v['apellido_m'] . "<br><br>";
                 ?>
             </p>
-            <div id="listMatBack" class="back"></div>
+            <div id="listMatBack" class="back animar"></div>
             <table id="listMat">
                 <tr>
                     <td class="title"><b>Materia Impartida</b></td>

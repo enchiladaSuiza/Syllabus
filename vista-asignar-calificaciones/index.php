@@ -19,7 +19,7 @@
         </nav>
     </header>
 
-    <main class="flex_col">
+    <main class="flex_row">
         <?php
             $connex = mysqli_connect("localhost", "root", "", "syllabus") or die("Conexión fallida: ".mysqli_connect_error());
 
@@ -37,7 +37,8 @@
 
             $resultado_alumno = mysqli_fetch_array(mysqli_query($connex, $query_alumno));
 
-            echo "<section id=\"carta_inicio animar\" class=\"carta\">";
+            echo "<div class=\"flex_col\">";
+            echo "<section id=\"carta_inicio\" class=\"carta animar\">";
             echo "<h1 id=\"nombre_materia\">$nombre_materia</h1>";
             echo "<h2 id=\"nombre_alumno\">".$resultado_alumno['apellido_p']." ".$resultado_alumno['apellido_m']." ".$resultado_alumno['nombre']."</h2>";
             echo "<h2 id=\"id_alumno\">$id_alumno</h2>";
@@ -55,7 +56,7 @@
                 } else { // Actualizar
                     $query_asignar = "CALL changeCal($id_alumno, $id_materia, $parcial, $calificacion);";
                 }
-                echo "<section id=\"carta_inicio animar\" class=\"carta\">";
+                echo "<section id=\"carta_mensaje\" class=\"carta_inicio carta animar\">";
             
                 $stmt_asignar = mysqli_query($connex, $query_asignar);
                 
@@ -72,9 +73,12 @@
                 }
             }
 
+            echo "</div>";
+
             $query_calif_1p = "SELECT readCalif($id_alumno, $id_materia, 1);";
             $calif_1p = mysqli_fetch_array(mysqli_query($connex, $query_calif_1p));
 
+            echo "<div class=\"flex_col\">";
             echo "<section class=\"carta parcial flex_col animar retardo-1\">";
             echo "<h1 class=\"titulo_parcial\">Primer Parcial</h1>";
             echo "<form action=\"index.php\" method=\"POST\" class=\"flex_row\">";
@@ -126,6 +130,7 @@
             echo "<input type=\"text\" name=\"mandar_id_alumno\" value=\"$id_alumno\" hidden>";
             echo "</form>";
             echo "</section>";
+            echo "</div>";
 
             mysqli_close($connex);
         ?>

@@ -95,7 +95,7 @@ main {
 .flex_row {
     display: flex;
     flex-flow: row;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
 }
 

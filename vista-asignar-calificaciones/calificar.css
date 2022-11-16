@@ -1,6 +1,7 @@
 .parcial {
     width: auto;
     padding: 0.5rem;
+    margin: 1rem;
 }
 
 .titulo_parcial {
@@ -20,9 +21,14 @@
 }
 
 #carta_inicio {
-    width: auto;
     padding: 0.5rem;
     padding-right: 2rem;
+    margin: 0.5rem;
+}
+
+#carta_mensaje {
+    padding: 0.5rem;
+    margin: 0.5rem;
 }
 
 #nombre_materia {

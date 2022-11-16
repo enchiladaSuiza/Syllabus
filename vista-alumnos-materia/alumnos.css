@@ -75,15 +75,18 @@
 
 @media screen and (max-width: 800px) {
     #nombre-materia {
-        font-size: 1rem;
+        font-size: 1.2rem;
     }
     #alumnos-inscritos {
-        font-size: 0.1rem;
+        font-size: 0.8rem;
     }
     .subtitulo {
-        font-size: 0.5rem;
+        font-size: 0.9rem;
     }
     .tupla {
-        font-size: 0.1rem;
+        font-size: 0.9rem;
+    }
+    .boton_calificar {
+        font-size: 0.8rem;
     }
 }
