@@ -3,11 +3,13 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 15-11-2022 a las 15:07:53
+-- Tiempo de generación: 16-11-2022 a las 18:07:59
 -- Versión del servidor: 8.0.31
--- Versión de PHP: 7.4.30
+-- Versión de PHP: 7.4.33
 
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -18,7 +20,7 @@ START TRANSACTION;
 --
 -- Base de datos: `syllabus`
 --
-CREATE DATABASE IF NOT EXISTS `syllabus` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS `syllabus` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
 USE `syllabus`;
 
 DELIMITER $$
@@ -76,7 +78,7 @@ CREATE TABLE `alumno` (
   `apellido_m` varchar(15) NOT NULL,
   `no_semestre` int NOT NULL,
   `correo` varchar(60) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- RELACIONES PARA LA TABLA `alumno`:
@@ -96,7 +98,15 @@ INSERT INTO `alumno` (`id_alumno`, `nombre`, `apellido_p`, `apellido_m`, `no_sem
 (55006, 'Roxan', 'Truver', 'Pox', 7, 'tr55006@esc.edu.mx'),
 (55007, 'Bernard', 'Lennin', 'Tossein', 8, 'le55007@esc.edu.mx'),
 (55008, 'Dulock', 'Shrink', 'Fedex', 9, 'sh55008@esc.edu.mx'),
-(55009, 'Warlock', 'Chester', 'Benson', 5, 'ch55009@esc.edu.mx');
+(55009, 'Warlock', 'Chester', 'Benson', 5, 'ch55009@esc.edu.mx'),
+(55010, 'Bellatrix', 'Lestrange', 'Corvet', 1, 'le55010@esc.edu.mx'),
+(55011, 'Tornelio', 'Turner', 'Trax', 2, 'tu55011@esc.edu.mx'),
+(55012, 'Wenceslao', 'Ritto', 'Rempus', 3, 'ri55012@esc.edu.mx'),
+(55013, 'Jonny', 'Joestar', 'Jary', 4, 'jo55013@esc.edu.mx'),
+(55014, 'Quintin', 'Beckham', 'Lorem', 6, 'be55014@esc.edu.mx'),
+(55015, 'Namor', 'Atlante', 'Escalante', 7, 'at55015@esc.edu.mx'),
+(55016, 'Beniju', 'Borjes', 'Banto', 8, 'bo55016@esc.edu.mx'),
+(55017, 'Yossel', 'Jordan', 'Jinx', 9, 'jo55017@esc.edu.mx');
 
 -- --------------------------------------------------------
 
@@ -109,7 +119,7 @@ CREATE TABLE `alum_calif` (
   `id_alum_cal` int NOT NULL,
   `id_alumno` int NOT NULL,
   `id_calif` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- RELACIONES PARA LA TABLA `alum_calif`:
@@ -140,7 +150,7 @@ CREATE TABLE `calificacion` (
   `id_materia` int NOT NULL,
   `calificacion` float NOT NULL,
   `parcial` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- RELACIONES PARA LA TABLA `calificacion`:
@@ -168,7 +178,7 @@ CREATE TABLE `cred_a` (
   `id_cred_a` int NOT NULL,
   `id_alumno` int NOT NULL,
   `cred` varchar(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- RELACIONES PARA LA TABLA `cred_a`:
@@ -190,7 +200,15 @@ INSERT INTO `cred_a` (`id_cred_a`, `id_alumno`, `cred`) VALUES
 (7, 55006, '55006'),
 (8, 55007, '55007'),
 (9, 55008, '55008'),
-(10, 55009, '55009');
+(10, 55009, '55009'),
+(11, 55010, '55010'),
+(12, 55011, '55011'),
+(13, 55012, '55012'),
+(14, 55013, '55013'),
+(15, 55014, '55014'),
+(16, 55015, '55015'),
+(17, 55016, '55016'),
+(18, 55017, '55017');
 
 -- --------------------------------------------------------
 
@@ -203,7 +221,7 @@ CREATE TABLE `cred_p` (
   `id_cred_p` int NOT NULL,
   `id_profesor` int NOT NULL,
   `cred` varchar(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- RELACIONES PARA LA TABLA `cred_p`:
@@ -261,7 +279,7 @@ CREATE TABLE `materia` (
   `nombre` varchar(50) NOT NULL,
   `id_profesor` int NOT NULL,
   `no_semestre` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- RELACIONES PARA LA TABLA `materia`:
@@ -334,7 +352,7 @@ CREATE TABLE `profesor` (
   `apellido_p` varchar(15) NOT NULL,
   `apellido_m` varchar(15) NOT NULL,
   `correo` varchar(60) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- RELACIONES PARA LA TABLA `profesor`:
@@ -438,25 +456,25 @@ ALTER TABLE `profesor`
 -- AUTO_INCREMENT de la tabla `alumno`
 --
 ALTER TABLE `alumno`
-  MODIFY `id_alumno` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55010;
+  MODIFY `id_alumno` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55018;
 
 --
 -- AUTO_INCREMENT de la tabla `alum_calif`
 --
 ALTER TABLE `alum_calif`
-  MODIFY `id_alum_cal` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_alum_cal` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `calificacion`
 --
 ALTER TABLE `calificacion`
-  MODIFY `id_calif` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_calif` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `cred_a`
 --
 ALTER TABLE `cred_a`
-  MODIFY `id_cred_a` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_cred_a` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `cred_p`
